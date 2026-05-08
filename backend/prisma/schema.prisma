@@ -1,0 +1,113 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  TRAINER
+  CLIENT
+}
+
+enum SubscriptionPlan {
+  FREE
+  PRO
+  PREMIUM
+}
+
+model User {
+  id               String           @id @default(uuid())
+  email            String           @unique
+  password         String
+  name             String
+  role             Role             @default(CLIENT)
+  subscriptionPlan SubscriptionPlan @default(FREE)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  trainerClients   User[]           @relation("TrainerClients")
+  trainer          User?            @relation("TrainerClients", fields: [trainerId], references: [id])
+  trainerId        String?
+
+  workoutPlans     WorkoutPlan[]
+  workoutSessions  WorkoutSession[]
+}
+
+model Exercise {
+  id           String   @id @default(uuid())
+  name         String
+  description  String?
+  muscleGroup  String
+  equipment    String?
+  videoUrl     String?
+  createdAt    DateTime @default(now())
+
+  workoutExercises WorkoutExercise[]
+}
+
+model WorkoutPlan {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workouts    Workout[]
+}
+
+model Workout {
+  id            String      @id @default(uuid())
+  name          String
+  dayOfWeek     Int?
+  workoutPlanId String
+  workoutPlan   WorkoutPlan @relation(fields: [workoutPlanId], references: [id])
+  createdAt     DateTime    @default(now())
+
+  exercises     WorkoutExercise[]
+  sessions      WorkoutSession[]
+}
+
+model WorkoutExercise {
+  id         String   @id @default(uuid())
+  workoutId  String
+  workout    Workout  @relation(fields: [workoutId], references: [id])
+  exerciseId String
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  sets       Int
+  reps       Int?
+  duration   Int?
+  restTime   Int?
+  order      Int
+}
+
+model WorkoutSession {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  workoutId String
+  workout   Workout  @relation(fields: [workoutId], references: [id])
+  date      DateTime @default(now())
+  duration  Int?
+  notes     String?
+  completed Boolean  @default(false)
+
+  sets      SessionSet[]
+}
+
+model SessionSet {
+  id               String         @id @default(uuid())
+  workoutSessionId String
+  workoutSession   WorkoutSession @relation(fields: [workoutSessionId], references: [id])
+  exerciseId       String
+  setNumber        Int
+  reps             Int?
+  weight           Float?
+  duration         Int?
+  completed        Boolean        @default(false)
+}

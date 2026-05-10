@@ -33,9 +33,7 @@ FitTrack Pro es una plataforma SaaS que permite gestionar entrenamientos persona
 
 ## ✅ Features implementadas
 
-- [x] Estructura monorepo (frontend + backend)
-- [x] Base de datos PostgreSQL en Docker
-- [x] Esquema de datos completo (usuarios, ejercicios, planes, sesiones, revisiones)
+**Backend**
 - [x] Autenticación completa: registro, login, JWT
 - [x] Roles de usuario: ADMIN, TRAINER, CLIENT
 - [x] Planes de suscripción: FREE, PRO, PREMIUM
@@ -51,37 +49,44 @@ FitTrack Pro es una plataforma SaaS que permite gestionar entrenamientos persona
 - [x] Progreso por ejercicio a lo largo del tiempo
 - [x] Récords personales por ejercicio
 - [x] Revisiones corporales con fotos (frontal, espalda, lateral)
-- [x] Tracking de peso, medidas (pecho, cintura, brazos, piernas) y % grasa corporal
-- [x] Intervalo de revisiones parametrizable (7, 14, 21 o 28 días)
+- [x] Tracking de peso, medidas y % grasa corporal
+- [x] Intervalo de revisiones parametrizable (7-28 días)
 - [x] Recordatorio de próxima revisión con cuenta atrás
-- [x] Seeder con datos reales: 24 ejercicios con vídeos de referencia en español
-- [x] Rutina Upper/Lower de hipertrofia real (4 días) para ganar masa muscular
+- [x] Seeder con 24 ejercicios reales con vídeos de referencia
+- [x] Rutina Upper/Lower de hipertrofia real (4 días)
+
+**Frontend**
+- [x] Landing page con hero, features y preview del dashboard
+- [x] Login con imagen de fondo y efecto cristal (glassmorphism)
+- [x] Sidebar responsive con navegación completa
+- [x] Modo oscuro / claro con toggle
+- [x] Sistema de color accent personalizable (Verde, Azul, Morado, Cian, Naranja)
+- [x] Contexto de autenticación con JWT
+- [x] Rutas protegidas
 
 ## 🔜 Próximamente
 
-- [ ] Plan de hipertrofia para gimnasio (cuando cambie de casa a gym)
-- [ ] Frontend completo en React + TypeScript
-- [ ] Dashboard con gráficas de progreso (peso, fuerza, volumen)
-- [ ] Comparativa visual entre revisiones corporales
-- [ ] Feedback automático basado en progreso
+- [ ] Dashboard con gráficas de progreso (Recharts)
+- [ ] Pantalla de entrenamiento en tiempo real
+- [ ] Página de progreso y récords personales
+- [ ] Página de revisiones corporales con comparativa visual
+- [ ] Página de ajustes con selector de color
 - [ ] CI/CD con GitHub Actions
 - [ ] Deploy en producción
 
 ## 🌱 Seeder
-
-El proyecto incluye un seeder con datos reales ejecutable en cualquier momento:
 
 ```bash
 cd backend
 npm run seed
 ```
 
-El seeder usa `upsert` — es seguro ejecutarlo múltiples veces sin duplicar datos. Para añadir nuevos ejercicios o planes, edita `prisma/seed.ts` y vuelve a ejecutarlo.
+El seeder usa `upsert` — seguro ejecutarlo múltiples veces. Para añadir ejercicios o planes, edita `prisma/seed.ts` y vuelve a ejecutarlo.
 
 **Datos incluidos:**
-- 24 ejercicios organizados por grupo muscular con descripción técnica y vídeo de referencia
-- Plan Upper/Lower de hipertrofia de 4 días optimizado para casa (barra + mancuernas)
-- Usuario de prueba: `jaime@fittrack.com` / `123456`
+- 24 ejercicios con descripción técnica y vídeo de referencia en español
+- Plan Upper/Lower de hipertrofia de 4 días para casa (barra + mancuernas)
+- Usuario: `jaime@fittrack.com` / `123456`
 
 ## 🛠️ Instalación y uso local
 
@@ -114,6 +119,7 @@ npm run dev
 
 ### URLs
 - Frontend: http://localhost:5173
+- Landing: http://localhost:5173/landing
 - Backend: http://localhost:3000
 - Swagger: http://localhost:3000/api/docs
 - Prisma Studio: `node_modules/.bin/prisma studio`

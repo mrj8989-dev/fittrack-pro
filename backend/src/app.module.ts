@@ -6,6 +6,8 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ExercisesModule } from './exercises/exercises.module';
 import { WorkoutPlansModule } from './workout-plans/workout-plans.module';
 import { WorkoutsModule } from './workouts/workouts.module';
+import { WorkoutSessionsModule } from './workout-sessions/workout-sessions.module';
+
 
 @Module({
   imports: [
@@ -15,7 +17,8 @@ import { WorkoutsModule } from './workouts/workouts.module';
     AuthModule,
     ExercisesModule,
     WorkoutPlansModule,
-    WorkoutsModule
+    WorkoutsModule,
+    WorkoutSessionsModule
   ],
 })
 export class AppModule {}

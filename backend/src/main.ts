@@ -7,7 +7,13 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Habilita validación automática con los DTOs
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+  app.useGlobalPipes(new ValidationPipe({ 
+  whitelist: true,
+  transform: true,
+  transformOptions: {
+    enableImplicitConversion: true,
+  },
+  }));
 
   // Habilita CORS para el frontend
   app.enableCors({ origin: 'http://localhost:5173' });

@@ -26,6 +26,7 @@ model User {
   name             String
   role             Role             @default(CLIENT)
   subscriptionPlan SubscriptionPlan @default(FREE)
+  revisionInterval Int              @default(14)
   createdAt        DateTime         @default(now())
   updatedAt        DateTime         @updatedAt
 
@@ -35,6 +36,7 @@ model User {
 
   workoutPlans     WorkoutPlan[]
   workoutSessions  WorkoutSession[]
+  bodyRevisions    BodyRevision[]
 }
 
 model Exercise {
@@ -110,4 +112,22 @@ model SessionSet {
   weight           Float?
   duration         Int?
   completed        Boolean        @default(false)
+}
+
+model BodyRevision {
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  date            DateTime @default(now())
+  weight          Float
+  bodyFat         Float?
+  chestCm         Float?
+  waistCm         Float?
+  armsCm          Float?
+  legsCm          Float?
+  notes           String?
+  photoFront      String?
+  photoBack       String?
+  photoSide       String?
+  createdAt       DateTime @default(now())
 }

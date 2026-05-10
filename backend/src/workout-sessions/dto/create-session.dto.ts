@@ -3,7 +3,7 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateSessionDto {
   @ApiProperty({ example: 'uuid-del-workout' })
-  @IsUUID()
+  @IsString()
   workoutId: string;
 
   @ApiPropertyOptional({ example: 75 })

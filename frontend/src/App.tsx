@@ -4,6 +4,7 @@ import Layout from './components/layout/Layout'
 import LoginPage from './pages/LoginPage'
 import LandingPage from './pages/LandingPage'
 import DashboardPage from './pages/DashboardPage'
+import WorkoutPage from './pages/WorkoutPage'
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuth()
@@ -26,6 +27,7 @@ export default function App() {
         </PrivateRoute>
       }>
         <Route index element={<DashboardPage />} />
+        <Route path="workout" element={<WorkoutPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/landing" replace />} />
     </Routes>

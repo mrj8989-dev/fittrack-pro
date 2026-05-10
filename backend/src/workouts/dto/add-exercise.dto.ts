@@ -1,9 +1,9 @@
-import { IsUUID, IsInt, IsOptional, Min } from 'class-validator';
+import { IsUUID, IsInt, IsOptional, Min, IsString } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class AddExerciseDto {
   @ApiProperty({ example: 'uuid-del-ejercicio' })
-  @IsUUID()
+  @IsString()
   exerciseId: string;
 
   @ApiProperty({ example: 4 })

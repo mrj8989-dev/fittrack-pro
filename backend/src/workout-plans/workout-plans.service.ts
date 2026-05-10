@@ -20,7 +20,17 @@ export class WorkoutPlansService {
   async findAll(userId: string) {
     return this.prisma.workoutPlan.findMany({
       where: { userId },
-      include: { workouts: true },
+      include: {
+        workouts: {
+          include: {
+            exercises: {
+              include: { exercise: true },
+              orderBy: { order: 'asc' },
+            },
+          },
+          orderBy: { dayOfWeek: 'asc' },
+        },
+      },
       orderBy: { createdAt: 'desc' },
     });
   }

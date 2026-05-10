@@ -1,9 +1,9 @@
-import { IsUUID, IsOptional, IsInt, IsBoolean, IsNumber, Min } from 'class-validator';
+import { IsUUID, IsOptional, IsInt, IsBoolean, IsNumber, Min, IsString } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateSessionSetDto {
   @ApiProperty({ example: 'uuid-del-ejercicio' })
-  @IsUUID()
+  @IsString()
   exerciseId: string;
 
   @ApiProperty({ example: 1 })

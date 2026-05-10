@@ -40,12 +40,6 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       {isOpen && (
         <div
           onClick={onClose}
-          style={{
-            position: 'fixed', inset: 0,
-            background: 'rgba(0,0,0,0.5)',
-            zIndex: 40,
-            display: 'none',
-          }}
           className="sidebar-overlay"
         />
       )}

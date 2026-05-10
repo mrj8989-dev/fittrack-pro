@@ -8,7 +8,7 @@
 
 ## 📋 Descripción
 
-FitTrack Pro es una plataforma SaaS que permite gestionar entrenamientos personales, hacer seguimiento de progreso de fuerza, registrar revisiones corporales con fotos y métricas, y visualizar la evolución a lo largo del tiempo. Diseñada para uso real — no es un proyecto de demo.
+FitTrack Pro es una plataforma SaaS fullstack para gestión de entrenamientos personales. Registra sesiones en tiempo real, sigue récords personales, controla tu evolución física con revisiones corporales y visualiza tu progreso con gráficas. Diseñada para uso real, no como demo.
 
 ## 🚀 Stack Tecnológico
 
@@ -43,7 +43,7 @@ FitTrack Pro es una plataforma SaaS que permite gestionar entrenamientos persona
 - [x] CRUD completo de ejercicios con filtros por músculo y equipamiento
 - [x] Módulo de planes de entrenamiento
 - [x] Módulo de workouts con gestión de ejercicios (series, reps, descanso)
-- [x] Registro de sesiones de entrenamiento
+- [x] Registro de sesiones de entrenamiento en tiempo real
 - [x] Registro de series con peso y repeticiones
 - [x] Historial de sesiones ordenado por fecha
 - [x] Progreso por ejercicio a lo largo del tiempo
@@ -63,88 +63,54 @@ FitTrack Pro es una plataforma SaaS que permite gestionar entrenamientos persona
 - [x] Sistema de color accent personalizable (Verde, Azul, Morado, Cian, Naranja)
 - [x] Contexto de autenticación con JWT
 - [x] Rutas protegidas
+- [x] Dashboard con métricas reales, gráficas de volumen y peso corporal
+- [x] Récords personales con barras de progreso
+- [x] Página de entrenamiento con selección de workout
+- [x] Registro de series en tiempo real con peso y reps
+- [x] Cronómetro de descanso parametrizable por ejercicio
+- [x] Barra de progreso de sesión
+- [x] Pantalla de sesión completada
+- [x] Enlace a vídeo de referencia por ejercicio
 
 ## 🔜 Próximamente
 
-- [ ] Dashboard con gráficas de progreso (Recharts)
-- [ ] Pantalla de entrenamiento en tiempo real
-- [ ] Página de progreso y récords personales
+- [ ] Página de progreso con gráficas por ejercicio
 - [ ] Página de revisiones corporales con comparativa visual
-- [ ] Página de ajustes con selector de color
+- [ ] Página de ajustes con selector de color accent
+- [ ] Página de récords personales
 - [ ] CI/CD con GitHub Actions
 - [ ] Deploy en producción
 
 ## 🌱 Seeder
 
 ```bash
-cd backend
-npm run seed
-```
-
-El seeder usa `upsert` — seguro ejecutarlo múltiples veces. Para añadir ejercicios o planes, edita `prisma/seed.ts` y vuelve a ejecutarlo.
-
-**Datos incluidos:**
-- 24 ejercicios con descripción técnica y vídeo de referencia en español
-- Plan Upper/Lower de hipertrofia de 4 días para casa (barra + mancuernas)
-- Usuario: `jaime@fittrack.com` / `123456`
-
-## 🛠️ Instalación y uso local
-
-### Requisitos
-- Node.js 20+
-- Docker Desktop
-
-### Pasos
-
-```bash
-# Clonar el repositorio
-git clone https://github.com/TU_USUARIO/fittrack-pro.git
-cd fittrack-pro
-
-# Levantar PostgreSQL
-docker-compose up -d postgres
-
-# Backend
-cd backend
-npm install
-npx prisma migrate dev
-npm run seed
-npm run start:dev
-
-# Frontend (nueva terminal)
-cd frontend
-npm install
-npm run dev
-```
-
-### URLs
-- Frontend: http://localhost:5173
-- Landing: http://localhost:5173/landing
-- Backend: http://localhost:3000
-- Swagger: http://localhost:3000/api/docs
-- Prisma Studio: `node_modules/.bin/prisma studio`
-
-## 📁 Estructura del proyecto
 
 fittrack-pro/
-├── frontend/                # React + TypeScript + Tailwind
-├── backend/                 # NestJS + Prisma + PostgreSQL
+├── frontend/                  # React + TypeScript + Tailwind
+│   └── src/
+│       ├── context/           # Auth y Theme contexts
+│       ├── components/layout/ # Sidebar y Layout responsive
+│       ├── pages/             # Landing, Login, Dashboard, Workout...
+│       ├── hooks/             # Custom hooks (useQuery + useMutation)
+│       └── lib/               # Axios config con interceptores JWT
+├── backend/                   # NestJS + Prisma + PostgreSQL
 │   ├── src/
-│   │   ├── auth/            # Autenticación JWT + Guards + Decoradores
-│   │   ├── users/           # Gestión de usuarios
-│   │   ├── exercises/       # CRUD ejercicios con filtros
-│   │   ├── workout-plans/   # Planes de entrenamiento
-│   │   ├── workouts/        # Workouts con ejercicios
-│   │   ├── workout-sessions/# Sesiones, series, récords y progreso
-│   │   ├── body-revisions/  # Revisiones corporales con fotos
-│   │   └── prisma/          # Servicio de base de datos
+│   │   ├── auth/              # JWT + Guards + Decoradores
+│   │   ├── users/             # Gestión de usuarios
+│   │   ├── exercises/         # CRUD ejercicios con filtros
+│   │   ├── workout-plans/     # Planes de entrenamiento
+│   │   ├── workouts/          # Workouts con ejercicios
+│   │   ├── workout-sessions/  # Sesiones, series y récords
+│   │   ├── body-revisions/    # Revisiones corporales con fotos
+│   │   └── prisma/            # Servicio de base de datos
 │   ├── prisma/
-│   │   ├── schema.prisma    # Esquema de base de datos
-│   │   ├── seed.ts          # Seeder con datos reales
-│   │   └── migrations/      # Historial de migraciones
-│   └── public/uploads/      # Fotos de revisiones corporales
+│   │   ├── schema.prisma      # Esquema de base de datos
+│   │   ├── seed.ts            # Seeder con datos reales
+│   │   └── migrations/        # Historial de migraciones
+│   └── public/uploads/        # Fotos de revisiones corporales
 ├── docker-compose.yml
 └── README.md
+
 
 ## 👨‍💻 Autor
 

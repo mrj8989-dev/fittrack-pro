@@ -41,15 +41,20 @@ FitTrack Pro es una plataforma SaaS que permite a entrenadores personales gestio
 - [x] Validación automática de DTOs
 - [x] Documentación Swagger en `/api/docs`
 - [x] JWT Guard — rutas protegidas
-- [x] CRUD completo de ejercicios con filtros por músculo y equipamiento
+- [x] CRUD completo de ejercicios con filtros
+- [x] Módulo de planes de entrenamiento
+- [x] Módulo de workouts con gestión de ejercicios
+- [x] Registro de sesiones de entrenamiento
+- [x] Registro de series con peso y repeticiones
+- [x] Historial de sesiones
+- [x] Progreso por ejercicio a lo largo del tiempo
+- [x] Récords personales por ejercicio
 
 ## 🔜 Próximamente
 
-- [ ] Módulo de planes de entrenamiento
-- [ ] Módulo de sesiones de entrenamiento
-- [ ] Dashboard con métricas y gráficas
-- [ ] Historial de sesiones
+- [ ] Seeder con rutina real de hipertrofia
 - [ ] Frontend completo en React + TypeScript
+- [ ] Dashboard con gráficas de progreso
 - [ ] CI/CD con GitHub Actions
 - [ ] Deploy en producción
 

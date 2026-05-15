@@ -28,6 +28,29 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     () => (localStorage.getItem('ft-accent') as AccentColor) || 'green'
   )
 
+  // useState<string>('hola')     // solo acepta strings
+  // useState<number>(0)          // solo acepta números
+  // useState<boolean>(false)     // solo acepta booleanos
+  // useState<string[]>([])       // solo acepta array de strings
+
+
+  //   function setAccentState(nuevoValor) {
+  //   accent = nuevoValor        // actualiza el valor
+  //   renderizaElComponente()    // re-renderiza
+  //   ejecutaLosUseEffects()     // dispara los useEffect que escuchan
+  // }
+
+  // setAccentState('blue')
+  //       ↓
+  // const [accent, setAccentState] = useState<AccentColor>('green')
+  // // accent pasa de 'green' a 'blue'
+  //         ↓
+  // useEffect(() => { ... }, [mode, accent])
+  // // detecta que accent cambió → se ejecuta
+  //         ↓
+  // --accent-primary: #378ADD
+  // toda la app se pone azul
+
   useEffect(() => {
     const root = document.documentElement
     const colors = accentColors[accent]

@@ -95,14 +95,19 @@ cd backend && node_modules/.bin/prisma studio
 - [x] Barra de progreso de sesión
 - [x] Pantalla de sesión completada
 - [x] Enlace a vídeo de referencia por ejercicio
+- [x] Página de progreso con gráficas por ejercicio
+- [x] Récords personales agrupados por grupo muscular
+- [x] Página de revisiones corporales con historial
+- [x] Gráfica de evolución de peso
+- [x] Lightbox para ver fotos de revisiones
+- [x] Página de ajustes con selector de color accent
+- [x] Toggle modo oscuro/claro desde ajustes
 
 ## 🔜 Próximamente
 
-- [ ] Página de progreso con gráficas por ejercicio
-- [ ] Página de revisiones corporales con comparativa visual
-- [ ] Página de ajustes con selector de color accent
-- [ ] Página de récords personales
+- [ ] Subida de fotos en revisiones corporales
 - [ ] Panel de entrenador con drag & drop
+- [ ] Gestión de clientes por entrenador
 - [ ] Chat entrenador ↔ cliente
 - [ ] CI/CD con GitHub Actions
 - [ ] Deploy en producción

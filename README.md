@@ -10,6 +10,30 @@
 
 FitTrack Pro es una plataforma SaaS fullstack para gestión de entrenamientos personales. Registra sesiones en tiempo real, sigue récords personales, controla tu evolución física con revisiones corporales y visualiza tu progreso con gráficas. Diseñada para uso real, no como demo.
 
+## ⚡ Arranque rápido (uso diario)
+
+```bash
+# Terminal 1 — Base de datos
+docker-compose up -d postgres
+
+# Terminal 2 — Backend
+cd backend && npm run start:dev
+
+# Terminal 3 — Frontend
+cd frontend && npm run dev
+
+# Terminal 4 — Prisma Studio (opcional)
+cd backend && node_modules/.bin/prisma studio
+```
+
+| Servicio | URL |
+|----------|-----|
+| Frontend | http://localhost:5173 |
+| Landing | http://localhost:5173/landing |
+| Backend | http://localhost:3000 |
+| Swagger | http://localhost:3000/api/docs |
+| Prisma Studio | http://localhost:5555 |
+
 ## 🚀 Stack Tecnológico
 
 **Frontend**
@@ -78,12 +102,53 @@ FitTrack Pro es una plataforma SaaS fullstack para gestión de entrenamientos pe
 - [ ] Página de revisiones corporales con comparativa visual
 - [ ] Página de ajustes con selector de color accent
 - [ ] Página de récords personales
+- [ ] Panel de entrenador con drag & drop
+- [ ] Chat entrenador ↔ cliente
 - [ ] CI/CD con GitHub Actions
 - [ ] Deploy en producción
 
 ## 🌱 Seeder
 
 ```bash
+cd backend
+npm run seed
+```
+
+El seeder usa `upsert` — seguro ejecutarlo múltiples veces. Para añadir ejercicios o planes, edita `prisma/seed.ts` y vuelve a ejecutarlo.
+
+**Datos incluidos:**
+- 24 ejercicios con descripción técnica y vídeo de referencia en español
+- Plan Upper/Lower de hipertrofia de 4 días para casa (barra + mancuernas)
+- Usuario: `jaime@fittrack.com` / `123456`
+
+## 🛠️ Instalación desde cero
+
+### Requisitos
+- Node.js 20+
+- Docker Desktop
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/TU_USUARIO/fittrack-pro.git
+cd fittrack-pro
+
+# Levantar PostgreSQL
+docker-compose up -d postgres
+
+# Backend
+cd backend
+npm install
+npx prisma migrate dev
+npm run seed
+npm run start:dev
+
+# Frontend (nueva terminal)
+cd frontend
+npm install
+npm run dev
+```
+
+## 📁 Estructura del proyecto
 
 fittrack-pro/
 ├── frontend/                  # React + TypeScript + Tailwind
@@ -112,7 +177,5 @@ fittrack-pro/
 └── README.md
 
 
-## 👨‍💻 Autor
-
 **Jaime Herrero Hernández** — Full Stack Developer  
-[LinkedIn](https://www.linkedin.com/in/jaime-herrero-hernandez) · [GitHub](https://github.com/TU_USUARIO)
+[LinkedIn](https://www.linkedin.com/in/jaime-herrero-hernandez) · [GitHub](https://github.com/mrj8989-dev)

@@ -6,6 +6,7 @@ import LandingPage from './pages/LandingPage'
 import DashboardPage from './pages/DashboardPage'
 import WorkoutPage from './pages/WorkoutPage'
 import ProgressPage from './pages/ProgressPage'
+import SettingsPage from './pages/SettingsPage'
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuth()
@@ -31,6 +32,7 @@ export default function App() {
         <Route index element={<DashboardPage />} />
         <Route path="workout" element={<WorkoutPage />} />
         <Route path="progreso" element={<ProgressPage />} />
+        <Route path="ajustes" element={<SettingsPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/landing" replace />} />
     </Routes>

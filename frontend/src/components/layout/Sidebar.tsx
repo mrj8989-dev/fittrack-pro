@@ -15,7 +15,7 @@ const navItems: NavItem[] = [
   { path: '/progreso',   label: 'Progreso',        icon: 'ti-chart-line' },
   { path: '/revisiones', label: 'Revisiones',      icon: 'ti-camera' },
   { path: '/records',    label: 'Récords',         icon: 'ti-trophy' },
-  { path: '/ejercicios', label: 'Ejercicios',      icon: 'ti-dumbbell' },
+  { path: '/ejercicios', label: 'Ejercicios',      icon: 'ti-crown' },
 ]
 
 interface SidebarProps {
